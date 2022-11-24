@@ -1,4 +1,4 @@
-export class User{
+export class User {
     constructor(
         private id: string,
         private name: string,
@@ -21,25 +21,27 @@ export class User{
                 return UserRole.ADMIN;
             default:
                 throw new Error("Invalid user role");
-            }
-        }
-    
-        static toUserModel(user: any) {
-            return new User(user.id, user.name, user.email, user.password, User.stringToUserRole(user.role));
         }
     }
 
-    export interface UserInputDTO {
-        email: string;
-        password: string;
-        name: string;
-        role: string;
+    static toUserModel(user: any) {
+        return new User(user.id, user.name, user.email, user.password, User.stringToUserRole(user.role));
     }
-    export interface LoginInputDTO {
-        email: string;
-        password: string;
-    }
-    export enum UserRole {
-        NORMAL = "NORMAL",
-        ADMIN = "ADMIN"
-    }
+}
+
+export interface UserInputDTO {
+    email: string;
+    password: string;
+    name: string;
+    role: string;
+}
+
+export interface LoginInputDTO {
+    email: string;
+    password: string;
+}
+
+export enum UserRole {
+    NORMAL = "NORMAL",
+    ADMIN = "ADMIN"
+}
